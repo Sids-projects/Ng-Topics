@@ -1,0 +1,245 @@
+<section class="main-btns mb-4">
+  <button
+    [ngClass]="{ 'link-active': showDesc }"
+    type="button"
+    (click)="showExplainBtn()"
+  >
+    Explanation
+  </button>
+  <button
+    [ngClass]="{ 'link-active': showWorkings }"
+    type="button"
+    (click)="showDescBtn()"
+  >
+    Workings
+  </button>
+</section>
+
+<!-- ---------- Explanation ---------- -->
+<section class="main-content" *ngIf="showDesc">
+  <h3>Angular Forms</h3>
+  <ul>
+    <li>
+      Forms are components of web applications that serve the purpose of
+      gathering and verifying user input.
+    </li>
+    <li>Angular offers two types of forms;</li>
+    <ol>
+      <li>Template driven forms.</li>
+      <li>Reactive forms.</li>
+    </ol>
+  </ul>
+
+  <div>
+    <h3>1. Template-Driven Forms:</h3>
+    <ul>
+      <li>
+        Template-driven forms are defined in the HTML template using
+        <span
+          class="tooltips"
+          matTooltip="classes that can add new behavior to the elements in the template or modify existing behavior"
+          >directives</span
+        >.
+      </li>
+      <li>They are easy to use and suitable for simple scenarios.</li>
+      <li style="list-style: none">
+        <b>Use Case:</b> Suitable for small to medium-sized forms with basic
+        validation requirements.
+      </li>
+    </ul>
+    <ol style="list-style: lower-roman">
+      <li>
+        <h4>ngForm:</h4>
+        <ul>
+          <li style="list-style: none"><b>Explanation:</b></li>
+          <li>
+            ngForm is a directive that creates a form group and binds the HTML
+            form element to the underlying NgForm directive.
+          </li>
+          <li>It's used to track the form state and validation.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ---------- Workings ---------- -->
+<section class="main-content" *ngIf="showWorkings">
+  <h2 class="text-center">Workings</h2>
+  <h3 class="text-center mb-4">Angular Forms</h3>
+
+  <!-- Template-Driven Forms -->
+  <div class="container-div">
+    <h3 class="text-center">
+      Template-Driven Forms: ngForm, ngModel, Validation
+    </h3>
+    <form #ngTdForm="ngForm">
+      <div>
+        <div>
+          <label>Name</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="tdFormEx"
+            name="tdFormEx"
+            required
+          />
+        </div>
+        <div
+          *ngIf="
+            ngTdForm.controls['tdFormEx']?.value?.length < 3 ||
+            !ngTdForm.controls['tdFormEx']?.value
+          "
+        >
+          <small class="error-msg"
+            >Name is required at least 3 characters.</small
+          >
+        </div>
+        <div *ngIf="ngTdForm.controls['tdFormEx']?.value?.length >= 3">
+          <small class="success-msg">Valid Name</small>
+        </div>
+      </div>
+
+      <div class="btn-div">
+        <button class="btn btn-primary mt-2" (click)="templateForm()">
+          Test Data
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Reactive Forms -->
+  <div class="mt-4 container-div">
+    <h3 class="text-center">Reactive Forms</h3>
+    <div class="container-head">
+      <h4>1. Reactive Forms: General</h4>
+      <hr />
+    </div>
+    <form [formGroup]="reactiveFormsEx">
+      <mat-form-field appearance="outline">
+        <mat-label>Normal Input</mat-label>
+        <input matInput type="text" formControlName="reactiveControl1" />
+      </mat-form-field>
+
+      <div class="mt-4">
+        <div class="container-head">
+          <h4>2. Types of Form Validations</h4>
+          <hr />
+        </div>
+        <div class="grid-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Required</mat-label>
+            <input matInput type="text" formControlName="reactiveControl2" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>MinLength & MaxLength</mat-label>
+            <input matInput type="text" formControlName="reactiveControl3" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Pattern</mat-label>
+            <input matInput type="text" formControlName="reactiveControl4" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="reactiveControl5" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <h4>Form Data</h4>
+        <p style="white-space: pre">
+          {{ reactiveFormsEx.value | json }}
+        </p>
+      </div>
+    </form>
+
+    <!-- Form Builder -->
+    <div class="mt-4">
+      <div class="container-head">
+        <h4>3. Reactive Forms: FormBuilder</h4>
+        <hr />
+      </div>
+      <form [formGroup]="reactiveFormBuilder" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>General</mat-label>
+          <input matInput type="text" formControlName="generalExample" />
+        </mat-form-field>
+
+        <div formGroupName="nestedFormGroup">
+          <div class="container-head">
+            <h4>4. Form Builder: Nested Form Group</h4>
+            <hr />
+          </div>
+          <div class="d-flex align-items-center gap-3">
+            <mat-form-field appearance="outline">
+              <mat-label for="nestedControl1">First Name</mat-label>
+              <input
+                type="text"
+                formControlName="nestedControl1"
+                id="nestedControl1"
+                matInput
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label for="nestedControl2">Last Name</mat-label>
+              <input
+                type="text"
+                formControlName="nestedControl2"
+                id="nestedControl2"
+                matInput
+              />
+            </mat-form-field>
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="mt-4">
+      <h4>Form Data</h4>
+      <p style="white-space: pre">
+        {{ reactiveFormBuilder.value | json }}
+      </p>
+    </div>
+
+    <!-- Form Array -->
+    <div class="mt-4">
+      <div class="container-head">
+        <h4>4. Reactive Forms: FormArray</h4>
+        <hr />
+      </div>
+      <form [formGroup]="reactiveFormArray" (ngSubmit)="onSubmitFormArray()">
+        <div formArrayName="skills">
+          <div *ngFor="let skillGroup of skills.controls; let i = index">
+            <div [formGroupName]="i" class="d-flex align-items-center gap-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Skill Name:</mat-label>
+                <input matInput type="text" id="name" formControlName="name" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Proficiency:</mat-label>
+                <mat-select formControlName="proficiency">
+                  <mat-option value="beginner">Beginner</mat-option>
+                  <mat-option value="intermediate">Intermediate</mat-option>
+                  <mat-option value="advanced">Advanced</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="btn-div mt-3">
+          <button class="btn btn-primary" type="button" (click)="addSkill()">
+            Add Skill
+          </button>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

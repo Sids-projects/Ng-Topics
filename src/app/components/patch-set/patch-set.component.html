@@ -1,0 +1,58 @@
+<h2>SetValue:</h2>
+<ul>
+  <li>SetValue is used to set values for all controls in the form group.</li>
+  <li>
+    The provided object must contain values for all controls in the form group.
+  </li>
+  <li>
+    If any control is missing in the provided object or the values are not
+    valid, it will throw an error.
+  </li>
+</ul>
+
+<h2>PatchValue:</h2>
+<ul>
+  <li>
+    PatchValue is used to set values for specific controls in the form group.
+  </li>
+  <li>
+    The provided object can contain values for only a subset of the form
+    controls.
+  </li>
+  <li>
+    If a control is not present in the provided object, its value remains
+    unchanged.
+  </li>
+  <li>It does not throw an error if controls are missing.</li>
+</ul>
+
+<form [formGroup]="myForm">
+  <div class="row">
+    <div class="col-4">
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
+    </div>
+    <div class="col-2">
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" formControlName="age" />
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-primary" type="button" (click)="setValueExample()">
+      Set Value
+    </button>
+    <button class="btn btn-primary" type="button" (click)="patchValueExample()">
+      Patch Value
+    </button>
+  </div>
+</form>

@@ -1,0 +1,34 @@
+.app {
+  .app-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
+    h2 {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      font-family: var(--font-manrope);
+    }
+
+    .app-select {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .app-icons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      font-size: 22px;
+      transform: translateY(-8px);
+    }
+  }
+
+  .app-body {
+    padding: 10px 20px;
+  }
+}

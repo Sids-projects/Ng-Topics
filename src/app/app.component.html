@@ -1,0 +1,54 @@
+<main class="app">
+  <section class="app-main" *ngIf="showHome">
+    <h2>Angular Topics</h2>
+    <div class="app-select">
+      <mat-form-field appearance="outline" class="app-select">
+        <mat-label>Topics</mat-label>
+        <mat-select placeholder="Choose Topics...">
+          <mat-option
+            *ngFor="let topicsList of topics"
+            [value]="topicsList.value"
+            [routerLink]="topicsList.value"
+            >{{ topicsList.viewValue }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <div class="app-icons">
+        <i routerLink="home" class="fa-solid fa-house"></i>
+        <i
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          class="fa-solid fa-circle-info"
+        ></i>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-body">
+    <router-outlet></router-outlet>
+  </section>
+</main>
+
+<!-- About Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel"><b>About</b></p>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">...</div>
+    </div>
+  </div>
+</div>

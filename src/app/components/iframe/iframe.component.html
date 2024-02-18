@@ -1,0 +1,30 @@
+<section class="iframe-main">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of SummaryData">
+        <td>{{ data.id }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.phoneNumber }}</td>
+        <td>{{ data.status }}</td>
+        <td>
+          <mat-icon (click)="sendMessageToIframe(data)">{{
+            data.icon
+          }}</mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="iframe-content">
+    <iframe id="myIframe" src="http://localhost:4202/iframe"></iframe>
+  </div>
+</section>

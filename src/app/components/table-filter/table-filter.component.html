@@ -1,0 +1,151 @@
+<form [formGroup]="filterForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Filter</mat-label>
+    <mat-select formControlName="filterValue">
+      <mat-option *ngFor="let head of filterHead" [value]="head">{{
+        head
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<!-- Method 1 -->
+<div class="table-responsive-xxl">
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Personal' ||
+            filterForm.value.filterValue === 'Proof'
+          "
+        >
+          SI No.
+        </th>
+        <th
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Personal' ||
+            filterForm.value.filterValue === 'Proof'
+          "
+        >
+          Name
+        </th>
+        <th
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Personal'
+          "
+        >
+          Age
+        </th>
+        <th
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Personal'
+          "
+        >
+          Location
+        </th>
+        <th
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Proof'
+          "
+        >
+          Pan
+        </th>
+        <th
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Proof'
+          "
+        >
+          Aadhar
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of filterData">
+        <td
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Personal' ||
+            filterForm.value.filterValue === 'Proof'
+          "
+        >
+          {{ data.id }}
+        </td>
+        <td
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Personal' ||
+            filterForm.value.filterValue === 'Proof'
+          "
+        >
+          {{ data.userName }}
+        </td>
+        <td
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Personal'
+          "
+        >
+          {{ data.age }}
+        </td>
+        <td
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Personal'
+          "
+        >
+          {{ data.location }}
+        </td>
+        <td
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Proof'
+          "
+        >
+          {{ data.pan }}
+        </td>
+        <td
+          *ngIf="
+            filterForm.value.filterValue === 'AllData' ||
+            filterForm.value.filterValue === 'Proof'
+          "
+        >
+          {{ data.aadhar }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Method 2 -->
+<!-- <div class="table-responsive-xxl">
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th *ngIf="shouldShowColumn('id')">SI No.</th>
+        <th *ngIf="shouldShowColumn('userName')">Name</th>
+        <th *ngIf="shouldShowColumn('age')">Age</th>
+        <th *ngIf="shouldShowColumn('location')">Location</th>
+        <th *ngIf="shouldShowColumn('pan')">Pan</th>
+        <th *ngIf="shouldShowColumn('aadhar')">Aadhar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let data of filterData">
+        <td *ngIf="shouldShowColumn('id')">{{ data.id }}</td>
+        <td *ngIf="shouldShowColumn('userName')">{{ data.userName }}</td>
+        <td *ngIf="shouldShowColumn('age')">{{ data.age }}</td>
+        <td *ngIf="shouldShowColumn('location')">{{ data.location }}</td>
+        <td *ngIf="shouldShowColumn('pan')">{{ data.pan }}</td>
+        <td *ngIf="shouldShowColumn('aadhar')">{{ data.aadhar }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
