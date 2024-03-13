@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IframeComponent } from './iframe.component';
+import { ChildComponent } from './child.component';
 
-describe('IframeComponent', () => {
-  let component: IframeComponent;
-  let fixture: ComponentFixture<IframeComponent>;
+describe('ChildComponent', () => {
+  let component: ChildComponent;
+  let fixture: ComponentFixture<ChildComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [IframeComponent]
+      declarations: [ChildComponent]
     });
-    fixture = TestBed.createComponent(IframeComponent);
+    fixture = TestBed.createComponent(ChildComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

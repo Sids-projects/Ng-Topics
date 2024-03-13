@@ -3,11 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsComponent } from './components/forms/forms.component';
-import { HomeComponent } from './components/home/home.component';
-import { NgForComponent } from './components/ng-for/ng-for.component';
-import { PatchSetComponent } from './components/patch-set/patch-set.component';
-import { TableFilterComponent } from './components/table-filter/table-filter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Material
@@ -22,19 +17,21 @@ import { MatIconModule } from '@angular/material/icon';
 // Forms
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgMaterialsComponent } from './components/ng-materials/ng-materials.component';
-import { IframeComponent } from './components/iframe/iframe.component';
+import { ParentComponent } from './components/parent/parent.component';
+import { ChildComponent } from './components/child/child.component';
+import { ParentChildComponent } from './components/parent-child/parent-child.component';
+
+// Service
+import { SharedService } from './shared.service';
+import { CodeBlocksComponent } from './components/code-blocks/code-blocks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormsComponent,
-    HomeComponent,
-    NgForComponent,
-    PatchSetComponent,
-    TableFilterComponent,
-    NgMaterialsComponent,
-    IframeComponent,
+    ParentComponent,
+    ChildComponent,
+    ParentChildComponent,
+    CodeBlocksComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +47,7 @@ import { IframeComponent } from './components/iframe/iframe.component';
     MatAutocompleteModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,26 +1,49 @@
 <main class="app">
   <section class="app-main" *ngIf="showHome">
-    <h2>Angular Topics</h2>
-    <div class="app-select">
-      <mat-form-field appearance="outline" class="app-select">
-        <mat-label>Topics</mat-label>
-        <mat-select placeholder="Choose Topics...">
-          <mat-option
-            *ngFor="let topicsList of topics"
-            [value]="topicsList.value"
-            [routerLink]="topicsList.value"
-            >{{ topicsList.viewValue }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-      <div class="app-icons">
-        <i routerLink="home" class="fa-solid fa-house"></i>
-        <i
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-          class="fa-solid fa-circle-info"
-        ></i>
+    <div class="app-headerOne">
+      <!-- Offcanvas -->
+      <p
+        class="menu-btn"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </p>
+      <div
+        class="offcanvas offcanvas-start custom-offcanvas"
+        tabindex="-1"
+        id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <div class="offcanvas-header">
+          <p class="offcanvas-title" id="offcanvasExampleLabel">
+            <b>Topics</b>
+          </p>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="list-group">
+            <li
+              class="list-group-item"
+              *ngFor="let topicsList of topics"
+              [value]="topicsList.value"
+              [routerLink]="topicsList.value"
+            >
+              <i [class]="'fa-regular' + topicsList.icon"></i>
+              {{ topicsList.optionName }}
+            </li>
+          </ul>
+        </div>
       </div>
+      <!-- Offcanvas End -->
+      <h2>Angular Topics</h2>
     </div>
   </section>
 
@@ -28,27 +51,3 @@
     <router-outlet></router-outlet>
   </section>
 </main>
-
-<!-- About Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <p class="modal-title" id="exampleModalLabel"><b>About</b></p>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">...</div>
-    </div>
-  </div>
-</div>

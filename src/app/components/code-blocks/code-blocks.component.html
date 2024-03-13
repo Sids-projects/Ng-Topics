@@ -1,0 +1,99 @@
+<pre class="line-numbers" *ngIf="serviceSteps === 'serviceStep1'">
+<code class="language-javascript">
+// data.service.ts
+import &#123; Injectable &#125; from '@angular/core';
+import &#123; BehaviorSubject &#125; from 'rxjs';
+
+&#64;Injectable(&#123;
+  providedIn: 'root',
+&#125;)
+export class DataService &#123;
+  private messageSource = new BehaviorSubject&lt;string&gt;('Default Message');
+  currentMessage = this.messageSource.asObservable();
+
+  changeMessage(message: string) &#123;
+    this.messageSource.next(message);
+  &#125;
+&#125;
+</code>
+</pre>
+
+<pre class="line-numbers" *ngIf="serviceSteps === 'serviceStep2'">
+<code class="language-javascript">
+// component-one.component.ts
+import &#123; Component, OnInit &#125; from '@angular/core';
+import &#123; DataService &#125; from '../data.service';
+  
+&#64;Component(&#123;;
+  selector: 'app-component-one',
+  template: `
+  &lt;h2&gt;Component One&lt;/h2&gt;
+  &lt;p&gt;&#64;&#64; message &#125;&#125;&lt;/p&gt;
+  `,
+&#125;)
+export class ComponentOneComponent implements OnInit &#123;
+  message: string = 'Initial Message';
+  
+  constructor(private dataService: DataService) &#123;&#125;
+  
+  ngOnInit() &#123;
+    this.dataService.currentMessage.subscribe((message) => &#123;
+      this.message = message;
+    &#125;);
+  &#125;
+&#125;
+  
+</code>
+</pre>
+
+<pre class="line-numbers" *ngIf="serviceSteps === 'serviceStep3'">
+<code class="language-javascript">
+// component-two.component.ts
+import &#123; Component, OnInit &#125; from '@angular/core';
+import &#123; DataService &#125; from '../data.service';
+    
+&#64;Component(
+  selector: 'app-component-two',
+  template: `
+  &lt;h2&gt;Component Two&lt;/h2&gt;
+    &lt;input type="text" [(ngModel)]="newMessage" /&gt;
+    &lt;button (click)="sendMessage()"&gt;Send Message&lt;/button&gt;
+  `,
+&#125;)
+export class ComponentTwoComponent &#123;
+  newMessage: string = '';
+    
+  constructor(private dataService: DataService) &#123;&#125;
+    
+  sendMessage() &#123;
+    this.dataService.changeMessage(this.newMessage);
+  &#125;
+&#125;
+</code>
+</pre>
+
+<pre class="line-numbers" *ngIf="serviceSteps === 'serviceStep4'">
+<code class="language-javascript">
+// app.module.ts
+import &#123; NgModule &#125; from '@angular/core';
+import &#123; BrowserModule &#125; from '@angular/platform-browser';
+import &#123; FormsModule &#125; from '@angular/forms';
+
+import &#123; AppComponent &#125; from './app.component';
+import &#123; ComponentOneComponent &#125; from './component-one.component';
+import &#123; ComponentTwoComponent &#125; from './component-two.component';
+import &#123; DataService &#125; from './data.service';
+
+&#64;NgModule(&#123;
+  declarations: [
+    AppComponent,
+    ComponentOneComponent,
+    ComponentTwoComponent,
+  ],
+  imports: [BrowserModule, FormsModule],
+  providers: [DataService], // Add DataService as a provider
+  bootstrap: [AppComponent],
+&#125;)
+export class AppModule &#123;&#125;
+</code>
+</pre>

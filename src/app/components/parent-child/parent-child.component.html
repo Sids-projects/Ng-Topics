@@ -1,0 +1,88 @@
+<section class="component-title">
+  <h3>Shared Service</h3>
+</section>
+
+<main class="component-main">
+  <section class="titles-container">
+    <div
+      class="title-cards"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasBottom"
+      aria-controls="offcanvasBottom"
+      (click)="explanationFn()"
+    >
+      <h4>Explanation</h4>
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </div>
+
+    <div
+      class="title-cards"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasBottom"
+      aria-controls="offcanvasBottom"
+      (click)="codeFn()"
+    >
+      <h4>Code</h4>
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </div>
+  </section>
+
+  <section class="components-container">
+    <div>
+      <app-parent></app-parent>
+    </div>
+    <div>
+      <app-child></app-child>
+    </div>
+  </section>
+</main>
+
+<!-- Offcanvas -->
+<div
+  class="offcanvas offcanvas-bottom"
+  tabindex="-1"
+  id="offcanvasBottom"
+  aria-labelledby="offcanvasBottomLabel"
+  style="height: 650px; overflow-y: auto"
+>
+  <div class="offcanvas-header">
+    <h3 class="offcanvas-title" id="offcanvasBottomLabel">
+      <b>{{ setTitle }}</b>
+    </h3>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="canvas-content" *ngIf="explanationIf">
+      <div class="ul-card">
+        <ul *ngFor="let data of explanation">
+          <li>
+            <i class="fa-solid {{ data.icon }}"></i><br />
+            <b>{{ data.title }}:</b><br />
+            {{ data.desc }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="canvas-steps" *ngIf="codeIf">
+      <div class="steps-container">
+        <ul *ngFor="let data of steps">
+          <li class="count-title">{{ data.count }} - {{ data.title }}</li>
+          <li class="content">
+            <i class="fa-solid fa-chevron-right"></i> &nbsp;{{ data.content }}
+          </li>
+          <li class="code">
+            <app-code-blocks
+              [serviceSteps]="data.codeBlockName"
+            ></app-code-blocks>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,14 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+// Fonts
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+// Code Snippet
+@import "~prismjs/themes/prism.css";
+@import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
 
 :root {
   --font-manrope: "Manrope", sans-serif;
+  --font-RobotoMono: "Roboto Mono", monospace;
 }
 
 * {
@@ -10,16 +16,6 @@
   margin: 0;
   box-sizing: border-box;
   font-family: var(--font-manrope);
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mat-typography h1,
@@ -37,7 +33,155 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.component-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  margin: 6px 0 24px 0;
+
+  h3 {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    color: rgb(92, 92, 244);
+  }
+
+  i {
+    font-size: 14px !important;
+  }
+}
+
+.component-main {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+
+  .titles-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+
+    .title-cards {
+      background-color: white;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.418);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 6px 12px;
+      border-radius: 6px;
+
+      h4 {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.canvas-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
+
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .ul-card {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    gap: 28px;
+  }
+
+  ul {
+    width: 320px;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    height: 100%;
+  }
+
+  i {
+    color: rgb(92, 92, 244);
+    font-size: 36px;
+    margin-bottom: 14px;
+  }
+
+  li b {
+    color: rgb(92, 92, 244);
+    font-size: 14px;
+  }
+}
+
+.canvas-steps {
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .count-title {
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .steps-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .codeBlock {
+    max-width: fit-content;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.224);
+    padding: 2px 20px 10px 10px;
+    border-radius: 6px;
+    margin-left: 10px;
+    margin-top: 12px;
+  }
+
+  .codeTitle {
+    font-size: 10px;
+    color: rgb(92, 92, 244);
+  }
+
+  .content {
+    margin-top: 6px;
+  }
+
+  .code {
+    font-family: var(--font-RobotoMono);
+    font-size: 14px;
+  }
+}
+
+.title-sub {
+  font-size: 16px !important;
+  font-weight: 700 !important;
 }
