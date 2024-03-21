@@ -24,6 +24,8 @@ import { ParentChildComponent } from './components/parent-child/parent-child.com
 // Service
 import { SharedService } from './shared.service';
 import { CodeBlocksComponent } from './components/code-blocks/code-blocks.component';
+import { PracticeComponent } from './components/practice/practice.component';
+import { FormArrayComponent } from './materials/form-array/form-array.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { CodeBlocksComponent } from './components/code-blocks/code-blocks.compon
     ChildComponent,
     ParentChildComponent,
     CodeBlocksComponent,
+    PracticeComponent,
+    FormArrayComponent,
   ],
   imports: [
     BrowserModule,

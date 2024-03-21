@@ -1,0 +1,23 @@
+<form [formGroup]="hobbyForm">
+  <div formArrayName="hobby">
+    <div
+      *ngFor="let hobbyControl of hobbyControl; let i = index"
+      [formGroupName]="i"
+      class="d-flex gap-3"
+    >
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <mat-select formControlName="desc">
+          <mat-option value="one">One</mat-option>
+          <mat-option value="Two">Two</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <button (click)="createHobby()" class="btn btn-primary">Create</button>
+  <p style="white-space: pre">{{ hobbyForm.value | json }}</p>
+</form>

@@ -22,6 +22,16 @@ export class AppComponent {
       optionName: 'Parent Child',
       icon: 'fa-object-group',
     },
+    {
+      value: 'practice',
+      optionName: 'Practice',
+      icon: 'fa-object-group',
+    },
+    {
+      value: 'formArray',
+      optionName: 'form Array',
+      icon: 'fa-object-group',
+    },
   ];
 
   constructor() {}

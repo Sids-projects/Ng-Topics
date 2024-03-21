@@ -1,0 +1,28 @@
+<h2>Total Count: {{ totalCount }}</h2>
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th>SI.No</th>
+      <th>Name</th>
+      <th>Ratio</th>
+      <th>Value</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of vendorList; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ data.vendor }}</td>
+      <td>{{ data.ratio }}</td>
+      <td>{{ data.value }} (Limit - {{ data.limit }})</td>
+      <td>{{ data.value - data.limit }}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Total Ratio -</td>
+      <td>Total Value -</td>
+      <td>Total Limit -</td>
+    </tr>
+  </tbody>
+</table>
